@@ -9,6 +9,8 @@ import useLogin from "./hook/useLogin";
 import useSignup from "./hook/useSignup";
 import Home from "./pages/Home";
 import Page404 from "./pages/Page404";
+import ReadBlog from "./pages/ReadBlog";
+import UserPostService from "./pages/UserPostService";
 
 const App = () => {
   const [email, setEmail] = useState("");
@@ -80,6 +82,14 @@ const App = () => {
                 <Navigate to="/" />
               )
             }
+          />
+          <Route
+            path="/create-post"
+            element={user ? <UserPostService /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/post/:id"
+            element={user ? <ReadBlog /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>
